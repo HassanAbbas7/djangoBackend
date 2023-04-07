@@ -1,0 +1,34 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <title>web appscraper</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+
+
+    <body>
+        {% block content %}
+        </div>
+        <div class="col-lg-6 col-md-7 col-sm-8">
+            <div class="banner-content">
+                <h1>please provide the link of the website to scrape.</h1> <br>
+                <h4>(Note that the hosting I am using will permit making requests to some sites. Those sites cannot be scraped on this hosting)</h4>
+                    <form method="post" action="{% url 'start_scrape' %}">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="text" name="link">
+                    <button href="{% url 'start_scrape' %}" name="run_script">Start Button</button>
+                    <!-- <button href="{% url 'start_scrape' %}" type="submit" name="run_script" class="primary-btn" value="{{link}}">Start Button</button> -->
+                </form>
+                <h3 class="link">{{link}} <style color="green"></style></h3>
+                <div class="status">{{status}}</div>
+            </div>
+        </div>
+        {% endblock content %}
+    </body>
+
+</html>
